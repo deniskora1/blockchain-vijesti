@@ -1,0 +1,62 @@
+<div class="add-news-container">
+  <h2>Dodaj Vijest</h2>
+  <form (ngSubmit)="addNews()" class="add-news-form">
+    <div class="form-group">
+      <label for="title">Naslov</label>
+      <input
+        type="text"
+        id="title"
+        [(ngModel)]="news.title"
+        name="title"
+        class="form-control"
+        placeholder="Unesite naslov vijesti"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="content">Sadržaj</label>
+      <textarea
+        id="content"
+        [(ngModel)]="news.content"
+        name="content"
+        class="form-control"
+        placeholder="Unesite sadržaj vijesti"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Kategorija</label>
+      <select
+        id="category"
+        [(ngModel)]="news.category"
+        name="category"
+        class="form-control"
+        required
+      >
+        <option value="" disabled selected>Odaberite kategoriju</option>
+        <option value="bitcoin">Bitcoin</option>
+        <option value="ethereum">Ethereum</option>
+        <option value="altcoin">Altcoin</option>
+        <option value="nft">NFT</option>
+        <option value="general">Ostalo</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="image_url">URL Slike</label>
+      <input
+        type="text"
+        id="image_url"
+        [(ngModel)]="news.image_url"
+        name="image_url"
+        class="form-control"
+        placeholder="Unesite URL slike"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj Vijest</button>
+  </form>
+</div>

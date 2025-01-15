@@ -1,0 +1,35 @@
+<div class="news-detail-container">
+  <div class="news-actions">
+    <a *ngIf="isAdmin" (click)="editNews()">Edituj vijest</a>
+    <a *ngIf="isAdmin" (click)="deleteNews()">Izbriši vijest</a>
+  </div>
+
+  <div class="news-content">
+    <h1>{{ news?.title }}</h1>
+    <p class="meta">Autor: {{ news?.author }} | <span>Objavljeno: {{ news.date | date: 'dd.MM.yyyy' }}</span></p>
+    <img [src]="news?.image_url" alt="{{ news?.title }}" class="news-image" />
+    <p>{{ news?.content }}</p>
+  </div>
+
+  <!-- Preporučene -->
+  <aside class="recommended-news">
+    <h2>Preporučene vijesti</h2>
+    <div class="recommended-container">
+      <div *ngFor="let recommended of recommendedNews" class="recommended-card">
+        <a [routerLink]="['/news', recommended.id]">
+          <img
+            [src]="recommended.image_url"
+            [alt]="'Slika za: ' + recommended.title"
+            class="recommended-image"
+          />
+        </a>
+        <div class="recommended-content">
+          <h3>
+            <a [routerLink]="['/news', recommended.id]">{{ recommended.title }}</a>
+          </h3>
+          <p class="meta">Autor: {{ recommended.author }}</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

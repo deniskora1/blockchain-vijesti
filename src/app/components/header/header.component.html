@@ -1,0 +1,24 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="logo-container">
+      <a routerLink="/" class="logo-link">
+        <img src="http://localhost/blockchain-vijesti-api/slike/blockchainvijesti-logo.png" alt="Blockchain Vijesti Logo" class="logo-image" />
+      </a>
+    </div>
+    
+    <div class="links">
+      <a routerLink="/category/bitcoin" class="navbar-link">Bitcoin Vijesti</a>
+      <a routerLink="/category/ethereum" class="navbar-link">Ethereum Vijesti</a>
+      <a routerLink="/category/altcoin" class="navbar-link">Altcoin Vijesti</a>
+      <a routerLink="/category/nft" class="navbar-link">NFT Vijesti</a>
+      <a routerLink="/category/general" class="navbar-link">Ostale Vijesti</a>
+
+      <a *ngIf="isLoggedIn && isAdmin" routerLink="/add-news" class="add-news">Dodaj vijest</a>
+    </div>
+    
+    <div class="auth-buttons">
+      <button *ngIf="!isLoggedIn" class="login-button" routerLink="/login">Prijava</button>
+      <button *ngIf="isLoggedIn" class="login-button" (click)="logout()">Odjavi se</button>
+    </div>
+  </div>
+</nav>

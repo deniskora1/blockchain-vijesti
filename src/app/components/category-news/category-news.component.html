@@ -1,0 +1,16 @@
+<div class="category-news-container">
+    <h1>{{ category }} Vijesti</h1>
+    <div class="news-list">
+      <div *ngFor="let news of categoryNews" class="news-item">
+        <img [src]="news.image_url" alt="{{ news.title }}" class="news-image" />
+        <div class="news-content">
+          <h2>
+            <a [routerLink]="['/news', news.id]">{{ news.title }}</a>
+          </h2>
+          <p>{{ news.content | slice: 0:150 }}...</p>
+          <p class="meta">Autor: {{ news.author }} | <span>Datum: {{ news.date | date: 'dd.MM.yyyy' }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,87 @@
+<div class="homepage-container">
+  <div class="top-section">
+
+    <section class="focused-news">
+      <a [routerLink]="['/news', latestNews[0]?.id]" *ngIf="latestNews[0]">
+        <img
+          [src]="latestNews[0]?.image_url"
+          [alt]="'Slika za: ' + latestNews[0]?.title"
+          class="focused-image"
+        />
+      </a>
+      <h2>
+        <a [routerLink]="['/news', latestNews[0]?.id]" *ngIf="latestNews[0]">
+          {{ latestNews[0]?.title }}
+        </a>
+      </h2>
+      <p *ngIf="latestNews[0]?.content">{{ latestNews[0]?.content | slice: 0:150 }}...</p>
+      <p class="meta" *ngIf="latestNews[0]">
+        Autor: {{ latestNews[0]?.author }} | Datum: {{ latestNews[0]?.date }}
+      </p>
+    </section>
+
+    
+    <section class="side-news">
+      <div *ngFor="let news of latestNews.slice(1, 7)" class="side-news-item">
+        <a [routerLink]="['/news', news.id]">
+          <img
+            [src]="news.image_url"
+            [alt]="'Slika za: ' + news.title"
+            class="side-thumbnail"
+          />
+        </a>
+        <div class="side-content">
+          <h4>
+            <a [routerLink]="['/news', news.id]">{{ news.title }}</a>
+          </h4>
+          <p class="meta">{{ news.author }} | {{ news.date }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+  
+  <section class="recommended-news">
+    <h2>Preporučene vijesti</h2>
+    <div class="card-container">
+      <div *ngFor="let news of recommendedNews" class="news-card">
+        <a [routerLink]="['/news', news.id]">
+          <img
+            [src]="news.image_url"
+            [alt]="'Slika za: ' + news.title"
+            class="news-image"
+          />
+        </a>
+        <div class="news-content">
+          <h3>
+            <a [routerLink]="['/news', news.id]">{{ news.title }}</a>
+          </h3>
+          <p>Autor: {{ news.author }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="homepage-container">
+  
+  <div class="calendar-news-container">
+    <div class="calendar-box">
+      <h2>Kalendar</h2>
+      <input type="date" (change)="onDateChange($event)" />
+    </div>
+  
+    
+    <ul class="news-list">
+      <li class="news-item" *ngFor="let news of filteredNews">
+        <div>
+          <a [routerLink]="['/news', news.id]">{{ news.title }}</a>
+          <p>{{ news.content | slice: 0:150 }}...</p>
+        </div>
+        <div>
+          <span>Autor: {{ news.author }}</span><br />
+          <span>Datum: {{ news.date }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
